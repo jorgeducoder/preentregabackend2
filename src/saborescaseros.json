@@ -55,17 +55,6 @@
 		"status": "T"
 	},
 	{
-		"id": 9,
-		"nombre": "papas",
-		"porciones": 8,
-		"recetadesc": "Como se mezclan los ingredientes",
-		"img": "/img/pastafrola.jpg",
-		"maxprod": 20,
-		"precio": 12,
-		"categoria": "Tartas",
-		"status": "T"
-	},
-	{
 		"id": 10,
 		"nombre": "milanga",
 		"porciones": 8,
