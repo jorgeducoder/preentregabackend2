@@ -1,7 +1,9 @@
+// Saco el intercambio del socket con el cliente fuera de app. En app tengo que importarlo
+
 import ProductManager from "./manager/productManager.js";
 
 export default (io) => {
-  const PM = new ProductManager("saborescaseros.json");
+  const productManager = new ProductManager("./src/saborescaseros.json");
 
   io.on("connection", handleConnection);
 
@@ -20,11 +22,13 @@ export default (io) => {
   }
 
   async function emitProducts(socket) {
-    const productsList = await PM.getProduct();
+    const productsList = await productManager.getProduct();
+    
+        
     //agrego un pequeño mod para utilizar img por defecto en caso de no tener thumbnail, despues ver si se puede mejorar
     productsList.forEach((product) => {
-      if (!product.thumbnails || product.thumbnails.length === 0) {
-        product.thumbnails = ["img/noThumbnails.jpg"];
+      if (!product.img || product.img.length === 0) {
+        product.img = ["img/noimg.jpg"];
       }
     });
 
@@ -32,12 +36,12 @@ export default (io) => {
   }
 
   async function addProductAndEmit(product) {
-    await PM.addProduct(product);
+    await productManager.addProduct(product);
     emitProducts(io);
   }
 
   async function deleteProductAndEmit(id) {
-    await PM.deleteProduct(id);
+    await productManager.deleteProduct(id);
     emitProducts(io);
   }
 };

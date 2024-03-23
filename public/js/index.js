@@ -1,10 +1,13 @@
-// el proyecto viejo tiene uno solo y el nuevo dos, uno para el formulario modal y otro para la lista de productos
+// EJEMPLO DE CLASE
 
 
 // Importante que este archivo este incluido en mi plantilla porque desde aqui vamos a trabajar con socket
 
 const socket = io();
 // El cliente envia el id (message) y el contenido del mensaje para el servidor en app.js
+
+console.log("Defini socket = io()");
+
 socket.emit("message", "Hola me estoy comunicando desde un websocket!");
 
 // Del lado del cliente tambien pone como se reciben los mensajes del socket servidor.

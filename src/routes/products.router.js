@@ -37,7 +37,8 @@ router.post("/", async (req, res) => {
     const { nombre, porciones, recetadesc, img, maxprod, precio, categoria, status } = req.body;
     //console.log(nombre, porciones, recetadesc, img, maxprod, precio, categoria, status );
     if (!nombre || !porciones || !recetadesc || !img || !maxprod || !precio || !categoria || !status)
-     return res.status(400).send({error: "Faltan datos para agregar al producto!"});
+     
+    return res.status(400).send({error: "Faltan datos para agregar al producto!"});
 
     //res.send( await PM.addProduct(req.body)); da error en el header pero devuelve codigo 200 idem el update
      await PM.addProduct(req.body);
