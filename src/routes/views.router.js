@@ -22,4 +22,11 @@ try {
 });
 
 
+/*router.get("/realtimeproducts", (req, res) =>
+  res.render("realTimeProducts", {
+    products: [],
+    style: "styles.css",
+  })
+);*/
+
 export default router;

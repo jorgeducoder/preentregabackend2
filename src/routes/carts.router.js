@@ -9,9 +9,9 @@ const CM = new CartManager("./src/cartsaborescaseros.json");
 const PM = new ProductManager("./src/saborescaseros.json");
  
 // Define los metodos para el router de usuarios
-const router = Router();
+const cartsRouter = Router();
 
-router.post("/", async (req, res) => {
+cartsRouter.post("/", async (req, res) => {
     //Desde la raiz se agrega un carrito nuevo
     try {
 
@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
 
 
 
-router.get("/", async (req, res) => {
+cartsRouter.get("/", async (req, res) => {
     // Desde la raiz se obtienen todos los carritos
     
     const { limit } = req.query;
@@ -38,7 +38,7 @@ router.get("/", async (req, res) => {
     res.send(carts);
 });
 
-router.get('/:cid', async (req, res) => {
+cartsRouter.get('/:cid', async (req, res) => {
     // Dado el id de un carrito lo muestra
     let cartId = req.params.cid;
     const cart = await CM.getcartProducts(cartId);
@@ -47,7 +47,7 @@ router.get('/:cid', async (req, res) => {
 
 
 
-router.post("/:cid/productos/:pid", async (req, res) => {
+cartsRouter.post("/:cid/productos/:pid", async (req, res) => {
     // Dado un id de carrito y un producto lo agrega y si existe lo actuliza con la cantidad que se recibe en el body
     const { cid, pid } = req.params;
     const { quantity } = req.body;
@@ -67,4 +67,4 @@ router.post("/:cid/productos/:pid", async (req, res) => {
 });
 
 
-export default router;
+export default cartsRouter;

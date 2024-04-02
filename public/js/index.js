@@ -10,7 +10,7 @@ console.log("Defini socket = io()");
 
 socket.emit("message", "Hola me estoy comunicando desde un websocket!");
 
-// Del lado del cliente tambien pone como se reciben los mensajes del socket servidor.
+// Del lado del cliente, donde estamos parados ahora, tambien pone como se reciben los mensajes del socket servidor.
 
 socket.on('evento_para_socket_individual', data => {
     console.log('>>>>>>>> evento_para_socket_individual\n', data);

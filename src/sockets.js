@@ -10,13 +10,14 @@ export default (io) => {
   async function handleConnection(socket) {
     console.log(`Nuevo cliente conectado ${socket.id}`);
     emitProducts(socket);
-
+    
     socket.on("add", async (product) => {
+      console.log("producto a agregar en socket:", product);
       await addProductAndEmit(product);
     });
 
     socket.on("delete", async (id) => {
-      console.log("ID del producto a eliminar:", id);
+      console.log("ID del producto a eliminar en socket:", id);
       await deleteProductAndEmit(id);
     });
   }

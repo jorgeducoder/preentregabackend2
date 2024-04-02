@@ -18,7 +18,8 @@ export class ProductManager {
         // Armo el array del nuevo producto con nueva id mas el array de atributos del nuevo producto
         const nuevoProducto = { id: await this.GetId(), ...producto, };
         
-        
+        console.log("Estoy en add  y producto a agregar: ", nuevoProducto)
+
         // Guardo en productos todos los existentes
 
         const productos = await this.getProduct();

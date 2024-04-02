@@ -35,7 +35,8 @@ router.get('/:pid', async (req, res) => {
 
 router.post("/", async (req, res) => {
     const { nombre, porciones, recetadesc, img, maxprod, precio, categoria, status } = req.body;
-    //console.log(nombre, porciones, recetadesc, img, maxprod, precio, categoria, status );
+    console.log("Body:", req.body);
+    console.log(nombre, porciones, recetadesc, img, maxprod, precio, categoria, status );
     if (!nombre || !porciones || !recetadesc || !img || !maxprod || !precio || !categoria || !status)
      
     return res.status(400).send({error: "Faltan datos para agregar al producto!"});
@@ -55,6 +56,7 @@ router.put("/:pid", async (req, res) => {
 router.delete("/:pid", async (req, res) => {
     const pid = req.params.pid;
     await PM.deleteProduct(pid);
+    console.log("Se elimino:", pid);
     res.status(201).send({message: "Producto eliminado correctamente!"});
 });
 

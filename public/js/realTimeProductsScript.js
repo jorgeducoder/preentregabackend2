@@ -1,6 +1,12 @@
-// Desde aca vamos a interacuar con socket.on y socket.emit para enviar a  y recibir del servidor
+// Aqui tenemos el socket cliente que interactua con el socket servidor. 
+// Vamos a interacuar con socket.on y socket.emit para enviar a  y recibir del servidor
 
 const socket = io();
+
+console.log("Defini socket = io()");
+
+socket.emit("message", "Hola me estoy comunicando desde un websocket!");
+
 const form = document.getElementById("formulario");
 const tableBody = document.getElementById("table-body");
 
@@ -31,6 +37,9 @@ socket.on("products", (data) => {
 });
 
 function createTableRow(product) {
+  
+  // Funcion que crea la tabla con las lineas de cada producto
+  
   const row = document.createElement("tr");
   row.innerHTML = `
     <td>${product.id}</td>
@@ -48,49 +57,60 @@ function createTableRow(product) {
 
 function deleteProduct(productId) {
   const id = parseInt(productId);
-  console.log("ID del producto a eliminar:", id);
+  console.log("ID del producto a eliminar en deletePoduct:", id);
   emptyTable();
+  
+  // hace el emit para el socket.on en sockets.js
+  
   socket.emit("delete", id);
 }
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const precio = parseFloat(document.getElementById("precio").value);
+  const precio = parseFloat(document.getElementById("price").value);
   const stock = parseInt(document.getElementById("stock").value);
   const fileInput = document.getElementById("thumbnails");
   const file = fileInput.files[0];
 
   const formData = new FormData();
-  formData.append("nombre", document.getElementById("nombre").value);
-  formData.append("descripcion", document.getElementById("descripcion").value);
-  formData.append("categoria", document.getElementById("categoria").value);
-  formData.append("precio", precio);
-  formData.append("status", document.getElementById("status").value);
+  formData.append("nombre", document.getElementById("title").value);
+  formData.append("stock", stock); // porciones
+  formData.append("descripcion", document.getElementById("description").value);
+  //formData.append("thumbnails", file);
+  formData.append("thumbnails", "sin img");
   formData.append("stock", stock);
-  formData.append("thumbnails", file);
-  
-  
-  
-  console.log("Estoy en el try del add", formData);
+  formData.append("price", precio);
+  formData.append("categoria", document.getElementById("category").value);
+  //formData.append("status", document.getElementById("status").value);
+  formData.append("status", "T");
   
   
   
   try {
+    console.log("Estoy en el try del add", formData);
     
-    
-    
+    // Aqui da un error cuando se hace el response con POST y Body como parametro.
+    // Si saco el throw new error se hace el socket.emit pero con datos indefinidos.
+    // En la lista actualizada de productos en el cliente se muestran los atributos como undefined.
+    // En el json se da de alta un registro con ID asignado correctamente y el mensaje de error.
+    // Si hago el POST por Postman el alta se hace correctamente.
+
+    // Envio response como en Postman 
     const response = await fetch("/api/products", {
       method: "POST",
       body: formData,
     });
 
-    if (!response.ok) {
-      throw new Error("Error al agregar el producto");
-    }
-
+    /*if (!response.ok) {
+      throw new Error("Error al agregar el producto con response y POST");
+    }*/
+    
+    // Si no error en response lo envio por socket
     const newProduct = await response.json();
-
+    
+    console.log("resultado de newProduct:", newProduct);
+    
     socket.emit("add", newProduct);
     const cancelButtonContainer = document.getElementById(
       "cancelButtonContainer"

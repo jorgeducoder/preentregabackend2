@@ -1,4 +1,7 @@
-// Aca iria todo el html de la plantilla para agregar el producto y la lista actualizable
+
+<!-- HTML del form para dar de alta un nuevo producto y la lista actualizable con los que se dan de alta y con los que se eliminan.
+    Se complementa con realTimeProductsScript.js -->
+
 <body>
 <div class="mx-auto px-4">
   <div class="mx-auto my-2 text-center border-2 text-uppercase">
@@ -119,15 +122,15 @@
           <th>Código</th>
           <th>Imagen</th>
           <th></th>
-        </tr>
+         </tr>
       </thead>
       <tbody id="table-body"></tbody>
     </table>
   </div>
 </div>
 </body>
-<!-- Scripts necesarios -->
-<script src="/socket.io/socket.io.js"></script>
+<!-- Scripts necesarios El socket.io  instancia su socket antes que el propio. En este caso realTimeProductsScript -->
+<script src="/socket.io/socket.io.js"></script> 
 <script src="/js/realTimeProductsScript.js"></script>
 
 
