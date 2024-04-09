@@ -9,7 +9,7 @@ const products = new ProductManager("./src/saborescaseros.json");
  router.get("/", async (req, res) => {   
 try {
         const productList = await products.getProduct();
-        res.render("realtimeproducts",
+        res.render("realTimeProducts",
         {
             title: "Real Time Products",
             style: "realtimeproducts.css",

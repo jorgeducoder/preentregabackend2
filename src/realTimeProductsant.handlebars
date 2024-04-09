@@ -24,17 +24,7 @@
             />
           </div>
           <div class="col-md-12 col-padding">
-            <label for="title">Porciones</label>
-            <input
-              class="form-control"
-              type="number"
-              id="porciones"
-              name="porciones"
-              required=""
-            />
-          </div>
-          <div class="col-md-12 col-padding">
-            <label for="description">Receta</label>
+            <label for="description">Descripción</label>
             <input
               class="form-control"
               type="text"
@@ -44,12 +34,12 @@
             />
           </div>
           <div class="col-md-12 split col-padding">
-            <label for="stock">Produccion máxima</label><br />
+            <label for="category">Categoria</label>
             <input
               class="form-control"
-              type="number"
-              id="stock"
-              name="stock"
+              type="text"
+              id="category"
+              name="category"
               required=""
             />
           </div>
@@ -62,17 +52,6 @@
               name="price"
               required=""
             />
-          <div class="col-md-12 split col-padding">
-            <label for="category">Categoria</label>
-            <input
-              class="form-control"
-              type="text"
-              id="category"
-              name="category"
-              required=""
-            />
-          </div>
-          
           </div>
           <div class="col-md-12 split col-padding">
             <label for="code">Codigo</label><br />
@@ -84,7 +63,16 @@
               required=""
             />
           </div>
-          
+          <div class="col-md-12 split col-padding">
+            <label for="stock">Stock</label><br />
+            <input
+              class="form-control"
+              type="number"
+              id="stock"
+              name="stock"
+              required=""
+            />
+          </div>
           <div class="col-md-12 col-padding">
             <label class="file-label" for="thumbnails">Imagen</label>
             <input

@@ -77,14 +77,14 @@
 		"status": "T"
 	},
 	{
-		"id": 10,
-		"nombre": "milanga",
+		"id": 11,
+		"nombre": "ggEmpanadag",
 		"porciones": 8,
-		"recetadesc": "Como se mezclan los ingredientes",
+		"recetadesc": "gempanada gallega",
 		"img": "/img/pastafrola.jpg",
-		"maxprod": 20,
-		"precio": 12,
-		"categoria": "Tartas",
-		"status": "T"
+		"maxprod": 15,
+		"precio": 10,
+		"categoria": "Tortas",
+		"status": "F"
 	}
 ]

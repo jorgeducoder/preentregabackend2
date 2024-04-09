@@ -70,20 +70,21 @@ form.addEventListener("submit", async (event) => {
 
   const precio = parseFloat(document.getElementById("price").value);
   const stock = parseInt(document.getElementById("stock").value);
+  const porciones = parseInt(document.getElementById("porciones").value);
   const fileInput = document.getElementById("thumbnails");
   const file = fileInput.files[0];
 
   const formData = new FormData();
   formData.append("nombre", document.getElementById("title").value);
-  formData.append("stock", stock); // porciones
-  formData.append("descripcion", document.getElementById("description").value);
+  formData.append("porciones", porciones); // porciones
+  formData.append("recetadesc", document.getElementById("description").value);
   //formData.append("thumbnails", file);
   formData.append("thumbnails", "sin img");
-  formData.append("stock", stock);
+  formData.append("stock", stock); // produccion maxima
   formData.append("price", precio);
   formData.append("categoria", document.getElementById("category").value);
   //formData.append("status", document.getElementById("status").value);
-  formData.append("status", "T");
+  //formData.append("status", "T");
   
   
   
@@ -97,14 +98,16 @@ form.addEventListener("submit", async (event) => {
     // Si hago el POST por Postman el alta se hace correctamente.
 
     // Envio response como en Postman 
+    //const response = await fetch("/", { DA ERROR 404
     const response = await fetch("/api/products", {
+    
       method: "POST",
       body: formData,
     });
-
-    /*if (!response.ok) {
+    //console.log("contenido de body:", body);
+    if (!response.ok) {
       throw new Error("Error al agregar el producto con response y POST");
-    }*/
+    };
     
     // Si no error en response lo envio por socket
     const newProduct = await response.json();
