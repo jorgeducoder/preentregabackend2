@@ -5,6 +5,9 @@
 import { Router } from "express";
 import { ProductManager } from "../manager/productManager.js";
 
+// importo el uploader para subir las imagenes, una por producto
+import { uploader } from "../middlewares/multer.js";
+
 // Al definir una nueva clase se indica el archivo donde alojar esa clase.
 const PM = new ProductManager("./src/saborescaseros.json");
 
@@ -33,7 +36,7 @@ router.get('/:pid', async (req, res) => {
 });
 
 
-router.post("/", async (req, res) => {
+/*router.post("/", async (req, res) => {
     const { nombre, porciones, recetadesc, img, maxprod, precio, categoria, status } = req.body;
     console.log("Body:", req.body);
     console.log(nombre, porciones, recetadesc, img, maxprod, precio, categoria, status );
@@ -45,13 +48,62 @@ router.post("/", async (req, res) => {
      await PM.addProduct(req.body);
 
     res.status(201).send({message: "Producto creado correctamente!"});
-});
+});*/
+
+
+// Nuevo POST Lucia. recibe en uploader la/s imagenes
+
+
+router.post("/", uploader.single("img"), async (req, res) => {
+    const { nombre, porciones, recetadesc,  stock, price, categoria } = req.body;
+    // aunque en el form se controla que ingrese valores numericos si vienen undefined se controla de esta manera
+    const porcionesNum = parseInt(porciones, 10);
+    const stockNum = parseInt(stock, 10);
+    const priceNum = parseInt(price);
+
+    console.log("Body:", req.body);
+    console.log("Archivo:", req.file); // req.file si se subio un archivo
+
+    
+    if (!nombre || isNaN(porcionesNum) || !recetadesc || isNaN(stockNum) || isNaN(priceNum) || !categoria)
+     
+    return res.status(400).send({error: "Faltan datos para agregar al producto!"});
+    
+    // asigna la imagen a una constante
+    const imgPath = req.file ? req.file.path : "";
+
+    try {
+        const newProduct = await PM.addProduct({
+            nombre,
+            porciones: porcionesNum,
+            recetadesc,
+            img: imgPath,
+            maxprod: stockNum,
+            precio: priceNum,
+            categoria,
+            status: "T"
+            
+        });
+        res.status(201).send(newProduct);
+
+
+    }catch (error) {
+        console.error(error);
+        res.status(500).send({error: "Error al procesar la solicitud!"});
+    }
+ });
+
+
+// UPDATE del producto
 
 router.put("/:pid", async (req, res) => {
     const pid = req.params.pid;
     await PM.updateProduct(pid, req.body);
     res.status(200).send({message: "Producto actualizado correctamente!"});
 })
+
+
+// DELETE del producto
 
 router.delete("/:pid", async (req, res) => {
     const pid = req.params.pid;

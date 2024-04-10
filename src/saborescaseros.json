@@ -86,5 +86,16 @@
 		"precio": 10,
 		"categoria": "Tortas",
 		"status": "F"
+	},
+	{
+		"id": 12,
+		"nombre": "jorge",
+		"porciones": 12,
+		"recetadesc": "vda",
+		"img": "",
+		"maxprod": 12,
+		"precio": 12,
+		"categoria": "dsg",
+		"status": "T"
 	}
 ]

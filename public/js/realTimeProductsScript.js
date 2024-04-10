@@ -78,13 +78,13 @@ form.addEventListener("submit", async (event) => {
   formData.append("nombre", document.getElementById("title").value);
   formData.append("porciones", porciones); // porciones
   formData.append("recetadesc", document.getElementById("description").value);
-  //formData.append("thumbnails", file);
-  formData.append("thumbnails", "sin img");
+  formData.append("thumbnails", file);
+  //formData.append("thumbnails", "sin img");
   formData.append("stock", stock); // produccion maxima
   formData.append("price", precio);
   formData.append("categoria", document.getElementById("category").value);
   //formData.append("status", document.getElementById("status").value);
-  //formData.append("status", "T");
+  formData.append("status", "T");
   
   
   
@@ -106,7 +106,7 @@ form.addEventListener("submit", async (event) => {
     });
     //console.log("contenido de body:", body);
     if (!response.ok) {
-      throw new Error("Error al agregar el producto con response y POST");
+      throw new Error("Error al agregar el producto con response y POST en el servidor");
     };
     
     // Si no error en response lo envio por socket
