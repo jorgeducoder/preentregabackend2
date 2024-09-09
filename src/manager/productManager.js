@@ -141,7 +141,5 @@ export class ProductManager {
         return 1;
     }
 }
-//Exporto la clase
-//module.exports = ProductManager;
-// Lo cambio por type module en json
+
 export default ProductManager;

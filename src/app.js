@@ -7,7 +7,6 @@ import __dirname from "./utils.js";
 import router from "./routes/products.router.js";
 import cartsRouter from "./routes/carts.router.js";
 import viewsRouter from "./routes/views.router.js";
-// lo utilizo en el socket import { ProductManager } from "./service/ProductManager.js";
 import Sockets from "./sockets.js";
 
 

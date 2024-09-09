@@ -8,7 +8,7 @@
 		"maxprod": 20,
 		"precio": 250,
 		"categoria": "Masas",
-		"codigo": "pizza",	
+		"codigo": "pizza",
 		"status": "T"
 	},
 	{
@@ -33,6 +33,18 @@
 		"precio": 400,
 		"categoria": "Tartas",
 		"codigo": "Tarta1",
+		"status": "T"
+	},
+	{
+		"id": 4,
+		"nombre": "Tortilla",
+		"porciones": 6,
+		"recetadesc": "receta de tortila",
+		"img": "",
+		"maxprod": 15,
+		"precio": 300,
+		"categoria": "Minutas",
+		"codigo": "tort1",
 		"status": "T"
 	}
 ]

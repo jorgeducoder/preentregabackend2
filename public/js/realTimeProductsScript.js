@@ -11,7 +11,6 @@ const form = document.getElementById("formulario");
 const tableBody = document.getElementById("table-body");
 
 function getProducts() {
-  console.log("voy a emitir", products)
   
     socket.emit("getProducts", (products) => {
     emptyTable();
@@ -85,7 +84,7 @@ form.addEventListener("submit", async (event) => {
   formData.append("price", precio);
   formData.append("categoria", document.getElementById("category").value);
   formData.append("codigo", document.getElementById("code").value);
-  //formData.append("status", document.getElementById("status").value);
+  //formData.append("status", document.getElementById("status").value); Al dar de alta por defecto es T
   formData.append("status", "T");
   
   
@@ -106,7 +105,7 @@ form.addEventListener("submit", async (event) => {
       method: "POST",
       body: formData,
     });
-    console.log("contenido de formdata:", formdata);
+    //console.log("contenido de formdata:", formData);
     if (!response.ok) {
       throw new Error("Error al agregar el producto con response y POST en el servidor");
     };
