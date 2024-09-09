@@ -39,7 +39,7 @@ socket.on("products", (data) => {
 function createTableRow(product) {
   
   // Funcion que crea la tabla con las lineas de cada producto
-  
+  // agregado codigo
   const row = document.createElement("tr");
   row.innerHTML = `
     <td>${product.id}</td>
@@ -48,6 +48,7 @@ function createTableRow(product) {
     <td class="text-nowrap">$ ${product.precio}</td>
     <td>${product.categoria}</td>
     <td>${product.maxprod}</td>
+    <td>${product.codigo}</td> 
     <td>${product.status}</td>
     <td><img src="${product.img}" alt="Thumbnail" class="thumbnail" style="width: 75px;"></td>
     <td><button class="btn btn-effect btn-dark btn-jif bg-black" onClick="deleteProduct('${product.id}')">Eliminar</button></td>
@@ -83,6 +84,7 @@ form.addEventListener("submit", async (event) => {
   formData.append("stock", stock); // produccion maxima
   formData.append("price", precio);
   formData.append("categoria", document.getElementById("category").value);
+  formData.append("codigo", document.getElementById("code").value);
   //formData.append("status", document.getElementById("status").value);
   formData.append("status", "T");
   
@@ -104,7 +106,7 @@ form.addEventListener("submit", async (event) => {
       method: "POST",
       body: formData,
     });
-    //console.log("contenido de body:", body);
+    console.log("contenido de formdata:", formdata);
     if (!response.ok) {
       throw new Error("Error al agregar el producto con response y POST en el servidor");
     };

@@ -1,0 +1,38 @@
+[
+	{
+		"id": 1,
+		"nombre": "Pizza",
+		"porciones": 8,
+		"recetadesc": "receta de pizza",
+		"img": "",
+		"maxprod": 20,
+		"precio": 250,
+		"categoria": "Masas",
+		"codigo": "pizza",	
+		"status": "T"
+	},
+	{
+		"id": 2,
+		"nombre": "Pizza con muzza",
+		"porciones": 8,
+		"recetadesc": "receta de muzza",
+		"img": "",
+		"maxprod": 20,
+		"precio": 350,
+		"categoria": "Masas",
+		"codigo": "pizza2",
+		"status": "T"
+	},
+	{
+		"id": 3,
+		"nombre": "Tarta de frutilla",
+		"porciones": 10,
+		"recetadesc": "receta de tarta",
+		"img": "",
+		"maxprod": 20,
+		"precio": 400,
+		"categoria": "Tartas",
+		"codigo": "Tarta1",
+		"status": "T"
+	}
+]

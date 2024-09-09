@@ -9,7 +9,7 @@ import { ProductManager } from "../manager/productManager.js";
 import { uploader } from "../middlewares/multer.js";
 
 // Al definir una nueva clase se indica el archivo donde alojar esa clase.
-const PM = new ProductManager("./src/saborescaseros.json");
+const PM = new ProductManager("./src/db/files/products.json");
 
 // Define los metodos para el router de usuarios
 const router = Router();
@@ -36,26 +36,12 @@ router.get('/:pid', async (req, res) => {
 });
 
 
-/*router.post("/", async (req, res) => {
-    const { nombre, porciones, recetadesc, img, maxprod, precio, categoria, status } = req.body;
-    console.log("Body:", req.body);
-    console.log(nombre, porciones, recetadesc, img, maxprod, precio, categoria, status );
-    if (!nombre || !porciones || !recetadesc || !img || !maxprod || !precio || !categoria || !status)
-     
-    return res.status(400).send({error: "Faltan datos para agregar al producto!"});
 
-    //res.send( await PM.addProduct(req.body)); da error en el header pero devuelve codigo 200 idem el update
-     await PM.addProduct(req.body);
-
-    res.status(201).send({message: "Producto creado correctamente!"});
-});*/
-
-
-// Nuevo POST Lucia. recibe en uploader la/s imagenes
+// Nuevo POST recibe en uploader la/s imagenes
 
 
 router.post("/", uploader.single("img"), async (req, res) => {
-    const { nombre, porciones, recetadesc,  stock, price, categoria } = req.body;
+    const { nombre, porciones, recetadesc,  stock, price, categoria, codigo } = req.body;
     // aunque en el form se controla que ingrese valores numericos si vienen undefined se controla de esta manera
     const porcionesNum = parseInt(porciones, 10);
     const stockNum = parseInt(stock, 10);
@@ -81,6 +67,7 @@ router.post("/", uploader.single("img"), async (req, res) => {
             maxprod: stockNum,
             precio: priceNum,
             categoria,
+            codigo, 
             status: "T"
             
         });

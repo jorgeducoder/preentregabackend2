@@ -3,10 +3,10 @@ import { CartManager } from "../manager/CartManager.js";
 import { ProductManager } from "../manager/productManager.js";
 
 // Define los nuevos objetos CM y PM con los metodos y datos del json
-const CM = new CartManager("./src/cartsaborescaseros.json");
+const CM = new CartManager("./src/db/files/carts.json");
 
 // La nueva clase PM en principio la necesito para ver si el producto que se ingresa para incorporar la carrito esta en la clase productos
-const PM = new ProductManager("./src/saborescaseros.json");
+const PM = new ProductManager("./src/db/files/products.json");
  
 // Define los metodos para el router de usuarios
 const cartsRouter = Router();

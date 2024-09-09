@@ -3,7 +3,7 @@
 import ProductManager from "./manager/productManager.js";
 
 export default (io) => {
-  const productManager = new ProductManager("./src/saborescaseros.json");
+  const productManager = new ProductManager("./src/db/files/products.json");
 
   io.on("connection", handleConnection);
 

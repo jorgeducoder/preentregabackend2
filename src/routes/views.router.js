@@ -2,11 +2,12 @@ import { Router } from "express";
 import { ProductManager } from "../manager/productManager.js";
 
 const router = Router();
-const products = new ProductManager("./src/saborescaseros.json");
+//const products = new ProductManager("./src/saborescaseros.json");
+const products = new ProductManager("./src/db/files/products.json");
 
 
-//router.get("/realtimeproducts", async (req, res) => {
- router.get("/", async (req, res) => {   
+router.get("/realtimeproducts", async (req, res) => {
+// router.get("/", async (req, res) => {   
 try {
         const productList = await products.getProduct();
         res.render("realTimeProducts",
@@ -22,11 +23,6 @@ try {
 });
 
 
-/*router.get("/realtimeproducts", (req, res) =>
-  res.render("realTimeProducts", {
-    products: [],
-    style: "styles.css",
-  })
-);*/
+
 
 export default router;

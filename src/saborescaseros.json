@@ -15,7 +15,7 @@
 		"nombre": "Pascualina",
 		"porciones": 8,
 		"recetadesc": "Producto cambiado 2",
-		"img": "/img2/pastafrola.jpg",
+		"img": "/img/pastafrola.jpg",
 		"maxprod": 5,
 		"precio": 15,
 		"categoria": "Tortas",
@@ -26,7 +26,7 @@
 		"nombre": "Tarta de frutillas",
 		"porciones": 8,
 		"recetadesc": "Producto cambiado 5",
-		"img": "/img5/pastafrola.jpg",
+		"img": "/img/pastafrola.jpg",
 		"maxprod": 5,
 		"precio": 25,
 		"categoria": "Postres",
@@ -77,25 +77,36 @@
 		"status": "T"
 	},
 	{
-		"id": 11,
-		"nombre": "ggEmpanadag",
-		"porciones": 8,
-		"recetadesc": "gempanada gallega",
-		"img": "/img/pastafrola.jpg",
-		"maxprod": 15,
-		"precio": 10,
-		"categoria": "Tortas",
-		"status": "F"
-	},
-	{
-		"id": 12,
-		"nombre": "jorge",
+		"id": 10,
+		"nombre": "eqwd",
 		"porciones": 12,
-		"recetadesc": "vda",
+		"recetadesc": "qwed",
 		"img": "",
 		"maxprod": 12,
 		"precio": 12,
-		"categoria": "dsg",
+		"categoria": "wf",
+		"status": "T"
+	},
+	{
+		"id": 11,
+		"nombre": "dvsv",
+		"porciones": 12,
+		"recetadesc": "fF",
+		"img": "",
+		"maxprod": 12,
+		"precio": 12,
+		"categoria": "12",
+		"status": "T"
+	},
+	{
+		"id": 12,
+		"nombre": "rwre",
+		"porciones": 1,
+		"recetadesc": "sda",
+		"img": "",
+		"maxprod": 1,
+		"precio": 1,
+		"categoria": "wf",
 		"status": "T"
 	}
 ]
